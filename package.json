@@ -1,0 +1,23 @@
+{
+  "name": "jc",
+  "version": "1.0.0",
+  "description": "static",
+  "main": "serve.js",
+  "scripts": {
+    "build": "node -v",
+    "serve": "node serve.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jc784999074/static.git"
+  },
+  "keywords": [
+    "static"
+  ],
+  "author": "jc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jc784999074/static/issues"
+  },
+  "homepage": "https://github.com/jc784999074/static#readme"
+}

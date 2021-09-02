@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/jc784999074/static/issues"
   },
-  "homepage": "https://github.com/jc784999074/static#readme"
+  "homepage": "https://github.com/jc784999074/static#readme",
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-static": "^5.0.0"
+  }
 }

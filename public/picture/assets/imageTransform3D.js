@@ -193,7 +193,7 @@ ge1doot.transform3D.Triangle.prototype.draw = function () {
 		var nw = this.texture.naturalWidth;
 		// 相框大小
 		var H = 640;
-		var W = 640;
+		var W = 386;
 		// 默认尺寸
 		var ph = H;
 		var pw = W;

@@ -197,17 +197,15 @@ ge1doot.transform3D.Triangle.prototype.draw = function () {
 		// 默认尺寸
 		var ph = H;
 		var pw = W;
-		var px = 0;
-		var py = 0;
 		if (nh / nw > H / W) {
 			// 图片高度比例过大
 			pw = (ph * nw) / nh;
-			py = (W - pw) / 2;
 		} else if (nh / nw < H / W) {
 			// 图片宽度比例过大
 			ph = (pw * nh) / nw;
-			px = (H - ph) / 2;
 		}
+		var px = (nw - pw) / 2;
+		var py = (nh - ph) / 2;
 		this.ctx.drawImage(this.texture, px, py, pw, ph);
 		this.ctx.restore();
 	}
@@ -249,10 +247,8 @@ ge1doot.transform3D.Image.prototype.loading = function () {
 		var dir = [0, 1, 1, 0, 0, 0, 1, 1];
 		this.isLoading = false;
 		// ---- image size ----
-		// this.textureWidth = this.texture.width;
-		// this.textureHeight = this.texture.height;
-		this.textureWidth = 640;
-		this.textureHeight = 386;
+		this.textureWidth = this.texture.width;
+		this.textureHeight = this.texture.height;
 		// ---- isLoaded callback ---
 		this.callback && this.callback.isLoaded && this.callback.isLoaded(this);
 		// ---- texture position ----

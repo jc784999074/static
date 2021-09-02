@@ -252,7 +252,7 @@ ge1doot.transform3D.Image.prototype.loading = function () {
 		// this.textureWidth = this.texture.width;
 		// this.textureHeight = this.texture.height;
 		this.textureWidth = 640;
-		this.textureHeight = 640;
+		this.textureHeight = 386;
 		// ---- isLoaded callback ---
 		this.callback && this.callback.isLoaded && this.callback.isLoaded(this);
 		// ---- texture position ----

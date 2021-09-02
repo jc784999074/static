@@ -192,7 +192,7 @@ ge1doot.transform3D.Triangle.prototype.draw = function () {
 		var nh = this.texture.naturalHeight;
 		var nw = this.texture.naturalWidth;
 		// 相框大小
-		var H = 386;
+		var H = 640;
 		var W = 640;
 		// 默认尺寸
 		var ph = H;
@@ -249,8 +249,10 @@ ge1doot.transform3D.Image.prototype.loading = function () {
 		var dir = [0, 1, 1, 0, 0, 0, 1, 1];
 		this.isLoading = false;
 		// ---- image size ----
-		this.textureWidth = this.texture.width;
-		this.textureHeight = this.texture.height;
+		// this.textureWidth = this.texture.width;
+		// this.textureHeight = this.texture.height;
+		this.textureWidth = 640;
+		this.textureHeight = 640;
 		// ---- isLoaded callback ---
 		this.callback && this.callback.isLoaded && this.callback.isLoaded(this);
 		// ---- texture position ----

@@ -197,6 +197,8 @@ ge1doot.transform3D.Triangle.prototype.draw = function () {
 		// 默认尺寸
 		var ph = H;
 		var pw = W;
+		var px = 0; //(nw - pw) / 2;
+		var py = 0; //(nh - ph) / 2;
 		if (nh / nw > H / W) {
 			// 图片高度比例过大
 			pw = (ph * nw) / nh;
@@ -204,8 +206,6 @@ ge1doot.transform3D.Triangle.prototype.draw = function () {
 			// 图片宽度比例过大
 			ph = (pw * nh) / nw;
 		}
-		var px = (nw - pw) / 2;
-		var py = (nh - ph) / 2;
 		this.ctx.drawImage(this.texture, px, py, pw, ph);
 		this.ctx.restore();
 	}

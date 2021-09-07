@@ -188,25 +188,7 @@ ge1doot.transform3D.Triangle.prototype.draw = function () {
 			(this.p0.tx * (t4 - t6) + this.p0.ty * (t8 - t9) + this.pxy * this.p0.Y) / this.d // dy
 		);
 		// ---- draw ----
-		// 图片实际大小
-		var nh = this.texture.naturalHeight;
-		var nw = this.texture.naturalWidth;
-		// 相框大小
-		var H = 386;
-		var W = 640;
-		// 默认尺寸
-		var ph = H;
-		var pw = W;
-		var px = 0; //(nw - pw) / 2;
-		var py = 0; //(nh - ph) / 2;
-		if (nh / nw > H / W) {
-			// 图片高度比例过大
-			pw = (ph * nw) / nh;
-		} else if (nh / nw < H / W) {
-			// 图片宽度比例过大
-			ph = (pw * nh) / nw;
-		}
-		this.ctx.drawImage(this.texture, px, py, pw, ph);
+		this.ctx.drawImage(this.texture, 0, 0);
 		this.ctx.restore();
 	}
 	return this.next;
@@ -247,10 +229,8 @@ ge1doot.transform3D.Image.prototype.loading = function () {
 		var dir = [0, 1, 1, 0, 0, 0, 1, 1];
 		this.isLoading = false;
 		// ---- image size ----
-		this.textureWidth = 640;
-		this.textureHeight = 386;
-		// this.textureWidth = this.texture.width;
-		// this.textureHeight = this.texture.height;
+		this.textureWidth = this.texture.width;
+		this.textureHeight = this.texture.height;
 		// ---- isLoaded callback ---
 		this.callback && this.callback.isLoaded && this.callback.isLoaded(this);
 		// ---- texture position ----

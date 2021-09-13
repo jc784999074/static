@@ -1,0 +1,208 @@
+/*
+ * reset css
+ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #333;
+  background: #f8fafc;
+}
+
+body {
+  font: 14px/1.5 'PingFangSC-Medium', 'PingFang SC', 'Microsoft Yahei';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+p,
+em,
+i,
+b,
+cite,
+del,
+strong,
+pre,
+code,
+address,
+form,
+fieldset,
+legend,
+input,
+textarea,
+select,
+table,
+caption,
+thead,
+th,
+tbody,
+td,
+tfoot,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-style: normal;
+  font-weight: normal;
+  word-wrap: break-word;
+  outline: none;
+}
+
+b {
+  font-weight: bold;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+  box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  border: 0;
+}
+
+input,
+textarea,
+select {
+  background: #fff;
+  font-family: inherit;
+  resize: none;
+}
+
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  -webkit-appearance: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  color: #419cff;
+  text-decoration: none;
+}
+
+/*3d css*/
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  --width: 500px;
+  --height: 500px;
+  --deg: 0deg;
+}
+
+.room-box {
+  position: relative;
+  perspective: calc(var(--width));
+  perspective-origin: 50% 50%;
+  width: var(--width);
+  height: var(--height);
+}
+
+.room-item {
+  position: absolute;
+  z-index: 1;
+  transform-origin: 50% 50% calc(var(--width) / 2);
+  transform-style: preserve-3d;
+  top: 0;
+  left: 0;
+  width: var(--width);
+  height: var(--height);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+
+  transition: transform 3s;
+}
+
+.room-item img {
+  display: block;
+  max-width: 30%;
+}
+
+.top {
+  background: yellowgreen;
+  transform: rotate3d(1, 0, 0, -90deg);
+}
+
+.bottom {
+  background: yellowgreen;
+  transform: rotate3d(1, 0, 0, -270deg);
+}
+
+
+.left {
+  background: red;
+  transform: rotate3d(0, 1, 0, calc(var(--deg) + 90deg));
+}
+
+.back {
+  background: forestgreen;
+  transform: rotate3d(0, 1, 0, calc(var(--deg) + 180deg));
+}
+
+.right {
+  background: red;
+  transform: rotate3d(0, 1, 0, calc(var(--deg) + 270deg));
+}
+
+.front {
+  background: forestgreen;
+  transform: rotate3d(0, 1, 0, var(--deg));
+}

@@ -19,7 +19,7 @@ var fn_signin = async (ctx, next) => {
 	}
 };
 
-export default {
+module.exports = {
 	'GET /': fn_index,
 	'POST /signin': fn_signin,
 };

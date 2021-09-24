@@ -21,7 +21,10 @@
   },
   "homepage": "https://github.com/jc784999074/static#readme",
   "dependencies": {
+    "imageinfo": "^1.0.4",
     "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
     "koa-static": "^5.0.0"
   }
 }

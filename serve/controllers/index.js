@@ -1,3 +1,5 @@
+import getFiles from '../util/index';
+
 var fn_index = async (ctx, next) => {
 	ctx.response.body = `<h1>Index</h1>
       <form action="/signin" method="post">
@@ -19,7 +21,15 @@ var fn_signin = async (ctx, next) => {
 	}
 };
 
+var post_getPitcure = async (ctx, next) => {
+	if (ctx.accepts('application/json')) {
+		var imgList = getFiles.getImageFiles('./public/3d/assets/img');
+		ctx.response.body = imgList;
+	}
+};
+
 module.exports = {
 	'GET /': fn_index,
 	'POST /signin': fn_signin,
+	'POST /getPicture': post_getPitcure,
 };

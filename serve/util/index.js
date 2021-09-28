@@ -1,5 +1,6 @@
 const fs = require('fs'); //引用文件系统模块
 const imageinfo = require('imageinfo'); //引用imageinfo模
+const config = require('./config');
 
 function readFileList(path, filesList) {
 	var files = fs.readdirSync(path);
@@ -50,6 +51,8 @@ const getFiles = {
 	getImageFiles: function (path) {
 		var imageList = [];
 
+		// 判断相对路径还是绝对路径。用于拼接
+		let sPath = path.substr(0, 2) === './' ? path.substring(1, path.length) : path;
 		this.getFileList(path).forEach(item => {
 			// 使用readFileSync后使用imageinfo无法获取图片的大小，换成readFil就可以，不知道为什么，此处的size使用stat获取了
 			var ms = imageinfo(fs.readFileSync(item.url));
@@ -60,7 +63,7 @@ const getFiles = {
           width: 1080,
           height: 1620
        */
-			ms.mimeType && imageList.push({ ...item, ...ms });
+			ms.mimeType && imageList.push({ ...item, ...ms, src: config.githubImg + sPath + '/' + item.filename });
 		});
 		return imageList;
 	},

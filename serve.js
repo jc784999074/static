@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const controller = require('./serve/middleware/router');

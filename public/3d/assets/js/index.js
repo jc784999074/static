@@ -1,3 +1,5 @@
+// const fragment = document.createDocumentFragment();
+
 let box = document.getElementById('roomBox');
 
 const leftDiv = box.getElementsByClassName('left')[0];
@@ -20,7 +22,7 @@ for (let i = 0; i < length; i++) {
 			// 将数组第一位取出，放到数组最后一位
 			idArr.push(idArr.shift());
 		} else if (idArr[3] === Number(index)) {
-			currentDeg += 90;
+			currentDeg = Number(currentDeg) + 90;
 			rootVar.setProperty('--deg', currentDeg + 'deg');
 			// 将数组最后一位取出，放到数组第一位
 			idArr.unshift(idArr.pop());

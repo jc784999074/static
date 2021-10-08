@@ -17,7 +17,7 @@ http.interceptors.request.use(
 http.interceptors.response.use(
 	function (res) {
 		if (res.data.code == 1) {
-			return res.data.result;
+			return Promise.resolve(res.data.result);
 		} else {
 			return Promise.reject(res.data);
 		}

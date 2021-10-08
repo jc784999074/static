@@ -28,7 +28,6 @@ const buildRoom = imgList => {
 	const bottomDiv = document.createElement('div');
 	bottomDiv.className = 'bottom room-item';
 
-	box.append([topDiv, frontDiv, leftDiv, backDiv, rightDiv, bottomDiv]);
 	imgList.forEach((img, index) => {
 		// 一面墙壁3张照片
 		if (index < 3) {
@@ -38,9 +37,16 @@ const buildRoom = imgList => {
 		} else if (index < 9) {
 			rightDiv.appendChild(img);
 		} else if (index < 12) {
-			bottomDiv.appendChild(img);
+			backDiv.appendChild(img);
 		}
 	});
+	box.appendChild(topDiv);
+	box.appendChild(frontDiv);
+	box.appendChild(leftDiv);
+	box.appendChild(backDiv);
+	box.appendChild(rightDiv);
+	box.appendChild(bottomDiv);
+	fragment.appendChild(box);
 	// 动效+事件
 	let currentDeg = getComputedStyle(document.documentElement).getPropertyValue('--deg');
 	currentDeg = currentDeg.substring(0, currentDeg.length - 3);
@@ -102,4 +108,6 @@ window.g_global
 		roomArr.forEach(room => {
 			buildRoom(room);
 		});
+
+		rootRoom.appendChild(fragment);
 	});

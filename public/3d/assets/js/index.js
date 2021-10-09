@@ -1,10 +1,31 @@
 const fragment = document.createDocumentFragment();
 const rootRoom = document.getElementById('root-room');
 
-const buildRoom = imgList => {
+const roomDoms = [];
+
+let currentRoomIndex = 0;
+
+function removeClasss(ele, txt) {
+	var str = ele.className,
+		index = str.indexOf(txt);
+	if (index > -1) {
+		ele.className = str.replace(txt, '');
+	}
+}
+function addClasss(ele, txt) {
+	ele.className += ` ${txt}`;
+}
+
+const buildRoom = (imgList, index) => {
 	// dom创建
 	const box = document.createElement('div');
-	box.className = 'room-box';
+	roomDoms.push(box);
+	if (index === currentRoomIndex) {
+		box.className = `room-box`;
+	} else {
+		box.className = `room-box transparent`;
+	}
+	box.setAttribute('data-roomindex', index + 1);
 
 	const topDiv = document.createElement('div');
 	topDiv.className = 'top room-item';
@@ -15,18 +36,58 @@ const buildRoom = imgList => {
 
 	const leftDiv = document.createElement('div');
 	leftDiv.className = 'left room-item wall';
-	frontDiv.setAttribute('data-id', 2);
+	leftDiv.setAttribute('data-id', 2);
 
 	const backDiv = document.createElement('div');
 	backDiv.className = 'back room-item wall';
-	frontDiv.setAttribute('data-id', 3);
+	backDiv.setAttribute('data-id', 3);
 
 	const rightDiv = document.createElement('div');
 	rightDiv.className = 'right room-item wall';
-	frontDiv.setAttribute('data-id', 4);
+	rightDiv.setAttribute('data-id', 4);
 
 	const bottomDiv = document.createElement('div');
 	bottomDiv.className = 'bottom room-item';
+
+	const btnL = document.createElement('a');
+	if (index === 0) {
+		btnL.className = 'button disabled';
+	} else {
+		btnL.className = 'button';
+	}
+	btnL.innerText = '上一个';
+
+	const btnR = document.createElement('a');
+	btnR.className = 'button';
+	btnR.innerText = '下一个';
+	btnL.onclick = () => {
+		if (currentRoomIndex === 0) {
+			return;
+		} else {
+			addClasss(roomDoms[currentRoomIndex], 'transparent');
+			currentRoomIndex -= 1;
+			removeClasss(roomDoms[currentRoomIndex], 'transparent');
+		}
+
+		if (currentRoomIndex === 1) {
+			btnL.className = 'button disabled';
+		}
+	};
+	btnR.onclick = () => {
+		if (currentRoomIndex === roomDoms.length - 1) {
+			return;
+		} else {
+			addClasss(roomDoms[currentRoomIndex], 'transparent');
+			currentRoomIndex += 1;
+			removeClasss(roomDoms[currentRoomIndex], 'transparent');
+		}
+
+		if ((currentRoomIndex === currentRoomIndex) === roomDoms.length - 2) {
+			btnR.className = 'button disabled';
+		}
+	};
+	bottomDiv.appendChild(btnL);
+	bottomDiv.appendChild(btnR);
 
 	imgList.forEach((img, index) => {
 		// 一面墙壁3张照片
@@ -75,7 +136,7 @@ const buildRoom = imgList => {
 	}
 };
 
-const roomArr = []; // [][img,img,img]
+const roomImgArr = []; // [][img,img,img]
 
 window.g_global
 	.axios({
@@ -91,7 +152,7 @@ window.g_global
 		const count = 12; // 一间房子12张照片
 		const roomCount = Math.ceil(allCount / count); // 获取有几个12，
 		for (let i = 0; i < roomCount; i++) {
-			roomArr.push([]);
+			roomImgArr.push([]);
 		}
 		let nowRoomIndex = 1;
 		let nowCount = nowRoomIndex * count; // 一房12个
@@ -102,11 +163,11 @@ window.g_global
 			}
 			const img = new Image();
 			img.src = res[i].src;
-			roomArr[nowRoomIndex - 1].push(img);
+			roomImgArr[nowRoomIndex - 1].push(img);
 		}
 
-		roomArr.forEach(room => {
-			buildRoom(room);
+		roomImgArr.forEach((room, index) => {
+			buildRoom(room, index);
 		});
 
 		rootRoom.appendChild(fragment);

@@ -15,6 +15,13 @@ function removeClasss(ele, txt) {
 function addClasss(ele, txt) {
 	ele.className += ` ${txt}`;
 }
+const btnL = document.createElement('a');
+btnL.className = 'button'; // disabled
+btnL.innerText = '上一个';
+
+const btnR = document.createElement('a');
+btnR.className = 'button';
+btnR.innerText = '下一个';
 
 const buildRoom = (imgList, index) => {
 	// dom创建
@@ -48,46 +55,10 @@ const buildRoom = (imgList, index) => {
 
 	const bottomDiv = document.createElement('div');
 	bottomDiv.className = 'bottom room-item';
-
-	const btnL = document.createElement('a');
 	if (index === 0) {
-		btnL.className = 'button disabled';
-	} else {
-		btnL.className = 'button';
+		bottomDiv.appendChild(btnL);
+		bottomDiv.appendChild(btnR);
 	}
-	btnL.innerText = '上一个';
-
-	const btnR = document.createElement('a');
-	btnR.className = 'button';
-	btnR.innerText = '下一个';
-	btnL.onclick = () => {
-		if (currentRoomIndex === 0) {
-			return;
-		} else {
-			addClasss(roomDoms[currentRoomIndex], 'transparent');
-			currentRoomIndex -= 1;
-			removeClasss(roomDoms[currentRoomIndex], 'transparent');
-		}
-
-		if (currentRoomIndex === 1) {
-			btnL.className = 'button disabled';
-		}
-	};
-	btnR.onclick = () => {
-		if (currentRoomIndex === roomDoms.length - 1) {
-			return;
-		} else {
-			addClasss(roomDoms[currentRoomIndex], 'transparent');
-			currentRoomIndex += 1;
-			removeClasss(roomDoms[currentRoomIndex], 'transparent');
-		}
-
-		if ((currentRoomIndex === currentRoomIndex) === roomDoms.length - 2) {
-			btnR.className = 'button disabled';
-		}
-	};
-	bottomDiv.appendChild(btnL);
-	bottomDiv.appendChild(btnR);
 
 	imgList.forEach((img, index) => {
 		// 一面墙壁3张照片
@@ -133,6 +104,37 @@ const buildRoom = (imgList, index) => {
 				idArr.unshift(idArr.pop());
 			}
 		});
+	}
+};
+
+btnL.onclick = () => {
+	if (currentRoomIndex === 0) {
+		return;
+	} else {
+		addClasss(roomDoms[currentRoomIndex], 'transparent');
+		currentRoomIndex -= 1;
+		removeClasss(roomDoms[currentRoomIndex], 'transparent');
+	}
+
+	if (currentRoomIndex === 0) {
+		btnL.className = 'button disabled';
+	} else if (currentRoomIndex < roomDoms.length - 1) {
+		btnR.className = 'button';
+	}
+};
+btnR.onclick = () => {
+	if (currentRoomIndex === roomDoms.length - 1) {
+		return;
+	} else {
+		addClasss(roomDoms[currentRoomIndex], 'transparent');
+		currentRoomIndex += 1;
+		removeClasss(roomDoms[currentRoomIndex], 'transparent');
+	}
+
+	if (currentRoomIndex === roomDoms.length - 1) {
+		btnR.className = 'button disabled';
+	} else if (currentRoomIndex > 0) {
+		btnL.className = 'button';
 	}
 };
 

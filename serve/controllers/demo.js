@@ -1,4 +1,3 @@
-const http = require('http');
 const got = require('got');
 
 var fn_hello = async (ctx, next) => {
@@ -6,9 +5,9 @@ var fn_hello = async (ctx, next) => {
 	ctx.response.body = `<h1>Hello, ${name}!</h1>`;
 };
 var fn_talk = async (ctx, next) => {
-	var name = ctx.query.msg;
+	var string = ctx.querystring;
 
-	const response = await got(`http://api.qingyunke.com/api.php?key=free&appid=0&msg=${name}`, {
+	const response = await got(`http://api.qingyunke.com/api.php?${string}`, {
 		method: 'GET',
 		prefixUrl: '',
 	});

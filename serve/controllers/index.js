@@ -34,5 +34,5 @@ const post_getPitcure = async (ctx, next) => {
 module.exports = {
 	'GET /': fn_index,
 	'POST /signin': fn_signin,
-	'POST /getPicture': post_getPitcure,
+	'GET /getPicture': post_getPitcure,
 };

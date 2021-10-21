@@ -142,7 +142,7 @@ const roomImgArr = []; // [][img,img,img]
 
 window.g_global
 	.axios({
-		method: 'post',
+		method: 'get',
 		url: '/getPicture',
 		data: {
 			firstName: 'Fred',

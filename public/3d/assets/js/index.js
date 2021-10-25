@@ -138,7 +138,27 @@ btnR.onclick = () => {
 	}
 };
 
-const roomImgArr = []; // [][img,img,img]
+const roomImgArr = [
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/1.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/2.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/3.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/4.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/5.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/6.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/7.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/8.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/9.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/10.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/11.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/12.jpeg',
+	'https://raw.githubusercontent.com/jc784999074/static/main/public/assets/img/13.jpeg',
+]; // [][img,img,img]
+
+roomImgArr.forEach((room, index) => {
+	buildRoom(room, index);
+});
+
+rootRoom.appendChild(fragment);
 
 window.g_global
 	.axios({
